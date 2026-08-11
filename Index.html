@@ -167,6 +167,28 @@ body{background:var(--black);color:#e7e5e4;font-family:"EB Garamond",serif;overf
 .aukan-access:hover .ak-text{color:rgba(195,185,235,.42)}
 .ak-text{font-family:"Cormorant Garamond",serif;font-size:1rem;font-style:italic;color:rgba(255,255,255,.16);transition:color .8s}
 
+/* ═══════════ MUYSCCUBUN WORLD ═══════════ */
+#muy-gateway{display:none;position:fixed;inset:0;background:#080604;z-index:600;opacity:0;transition:opacity 2s ease;overflow:hidden}
+#muy-stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+.muy-nebula{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 65% 45% at 50% 28%,rgba(201,162,39,.10) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 75% 72%,rgba(139,115,85,.10) 0%,transparent 50%),radial-gradient(ellipse 50% 40% at 22% 62%,rgba(201,162,39,.06) 0%,transparent 55%)}
+.muy-body{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;text-align:center}
+.muy-seal{position:relative;width:170px;height:170px;margin:0 auto 2.5rem}
+.muy-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(201,162,39,.3);animation:my-ring 3.5s ease-in-out infinite}
+.muy-ring:nth-child(2){inset:-22px;animation-delay:.9s;border-color:rgba(201,162,39,.18)}
+.muy-ring:nth-child(3){inset:-48px;animation-delay:1.8s;border-color:rgba(201,162,39,.12)}
+@keyframes my-ring{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.85;transform:scale(1.025)}}
+.muy-img{position:absolute;inset:0;border-radius:50%;overflow:hidden;z-index:1;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(201,162,39,.08) 0%,transparent 70%)}
+.muy-img img{width:60%;height:60%;object-fit:contain;opacity:.85}
+.muy-title{font-family:"Cinzel",serif;font-size:clamp(2rem,8vw,3.2rem);font-weight:400;letter-spacing:.4em;color:rgba(224,201,140,.92);text-shadow:0 0 45px rgba(201,162,39,.35);margin-bottom:.4rem}
+.muy-role{font-family:"Cinzel",serif;font-size:.6rem;letter-spacing:.55em;text-transform:uppercase;color:rgba(201,162,39,.5);margin-bottom:1.8rem}
+.muy-quote{font-family:"Cormorant Garamond",serif;font-size:clamp(1.1rem,3vw,1.45rem);font-style:italic;color:rgba(224,201,140,.5);line-height:1.65;margin-bottom:2.5rem;max-width:420px}
+
+/* MUYSCCUBUN ARCHIVE */
+#muy-archive{display:none;position:fixed;inset:0;background:var(--black);z-index:700;overflow-y:auto;opacity:0;transition:opacity 1.5s ease}
+#muy-archive.visible{display:block;opacity:1}
+.muy-close{position:fixed;top:1.6rem;right:1.8rem;z-index:710;font-family:"Cinzel",serif;font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(201,162,39,.5);background:none;border:none;cursor:pointer;transition:color .5s}
+.muy-close:hover{color:var(--gold)}
+
 /* ═══════════ AJUSTES MÓVIL: PÁGINA PRINCIPAL + AUKAN ═══════════ */
 @media(max-width:768px){
   /* ===== NAV ===== */
@@ -181,8 +203,8 @@ body{background:var(--black);color:#e7e5e4;font-family:"EB Garamond",serif;overf
   /* ===== EXPERIENCIA ===== */
   .exp-card-grid{grid-template-columns:1fr!important}
 
-  /* ===== MUYUSCCUBUN ===== */
-  #muyusccubun div[style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+  /* ===== MUYSCCUBUN ===== */
+  #muy-archive div[style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
   
   /* ===== MODAL ===== */
   .d-hero{height:45vh}
@@ -709,6 +731,101 @@ en aquello que permanece cuando todo lo demás cambia.</p>
   </div>
 </div>
 
+<!-- ══ MUYSCCUBUN GATEWAY ══ -->
+<div id="muy-gateway">
+  <canvas id="muy-stars"></canvas>
+  <div class="muy-nebula"></div>
+  <div class="muy-body">
+    <div class="muy-seal">
+      <div class="muy-ring"></div><div class="muy-ring"></div><div class="muy-ring"></div>
+      <div class="muy-img"><img src="Logo_PLECWH_Brebatos.png" alt="Muyusccubun"></div>
+    </div>
+    <p class="muy-title">MUYSCCUBUN</p>
+    <p class="muy-role">Revista Bimensual</p>
+    <p class="muy-quote">"En papel digital,<br>sostenemos la memoria que las manifestaciones apenas insinúan."</p>
+    <button class="btn-c" onclick="enterMuysccubunArchive()">Ver Ediciones</button>
+  </div>
+</div>
+
+<!-- ══ MUYSCCUBUN ARCHIVE ══ -->
+<div id="muy-archive">
+  <button class="muy-close" onclick="closeMuysccubunArchive()">Cerrar</button>
+  <div style="padding:7rem 1.5rem;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 35% at 50% 15%,rgba(201,162,39,.05) 0%,transparent 68%)"></div>
+    <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
+      <div style="text-align:center;margin-bottom:3.5rem">
+        <p class="section-tag reveal" style="display:block;margin-bottom:1rem">Revista Bimensual</p>
+        <h2 class="section-h reveal rd1">Muyusccubun</h2>
+        <p class="reveal rd2" style="margin-top:1.5rem;color:rgba(255,255,255,.45);font-size:1.05rem;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.8;font-weight:300">
+          Muyusccubun —nombre que evoca la lengua muisca del territorio que habitamos— es el producto cultural y ecológico de Brebatos: una revista bimensual gratuita que nace para sostener, en papel digital, las memorias que nuestras manifestaciones apenas insinúan.
+        </p>
+        <p class="reveal rd3" style="margin-top:1.2rem;color:rgba(255,255,255,.32);font-size:.98rem;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.8;font-weight:300">
+          Cada edición se organiza alrededor de un mito del altiplano cundiboyacense, y se abre en dos direcciones: el territorio —sus caminos, sus aguas, sus comunidades— y la ecología —las especies, los ciclos, las urgencias del páramo y el bosque andino—. Es lectura pausada, pensada para acompañar una manifestación y un silencio.
+        </p>
+        <p class="reveal rd4" style="margin-top:1.2rem;font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(201,162,39,.5)">Un producto cultural y ecológico patrocinado por Brebatos</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem" class="reveal">
+        <a href="https://drive.google.com/file/d/16rBojZDghpOVo9prQuLFHb3OBeCFwlx6/view?usp=drive_link" target="_blank" rel="noopener" class="exp-card" style="text-decoration:none;display:block;padding:1.6rem 1rem;text-align:center">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:var(--gold);margin-bottom:.5rem">00</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.4">Junio &ndash; Julio<br>2026</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,162,39,.7)">Ver en Drive &rarr;</p>
+        </a>
+        <a href="https://drive.google.com/file/d/1Ac33nHbUALgiklIr-fzM4Er6fPKpRSkT/view?usp=drive_link" target="_blank" rel="noopener" class="exp-card" style="text-decoration:none;display:block;padding:1.6rem 1rem;text-align:center">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:var(--gold);margin-bottom:.5rem">01</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.4">Agosto &ndash; Septiembre<br>2026</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,162,39,.7)">Ver en Drive &rarr;</p>
+        </a>
+        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">02</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Octubre &ndash; Noviembre<br>2026</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
+        </div>
+        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">03</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Diciembre 2026 &ndash;<br>Enero 2027</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
+        </div>
+        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">04</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Febrero &ndash; Marzo<br>2027</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
+        </div>
+        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">05</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Abril &ndash; Mayo<br>2027</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
+        </div>
+        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">06</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Junio &ndash; Julio<br>2027</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
+        </div>
+        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">07</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Agosto &ndash; Septiembre<br>2027</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
+        </div>
+        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">08</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Octubre &ndash; Noviembre<br>2027</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
+        </div>
+        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
+          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">09</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Diciembre 2027 &ndash;<br>Enero 2028</p>
+          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:4rem">
+        <p style="font-family:Cormorant Garamond,serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.22)">Fin del Archivo</p>
+        <button class="btn-c" style="margin-top:2rem" onclick="closeMuysccubunArchive()">Regresar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ══ MANIFESTACIÓN MODAL ══ -->
 <div id="manifestacion-detail">
   <button class="d-close" onclick="closeManifestacionDetail()">Cerrar</button>
@@ -767,7 +884,7 @@ en aquello que permanece cuando todo lo demás cambia.</p>
       <a href="#origen" class="nav-link">Origen</a>
       <a href="#experiencia" class="nav-link">Experiencia</a>
       <a href="javascript:void(0)" class="nav-link" onclick="openAukan()">Aukan</a>
-      <a href="#muyusccubun" class="nav-link">Muyusccubun</a>
+      <a href="javascript:void(0)" class="nav-link" onclick="openMuysccubun()">Muyusccubun</a>
       <a href="#contacto" class="nav-link">Contacto</a>
     </div>
     <button class="nav-hamburger" onclick="toggleMenu()">
@@ -789,7 +906,7 @@ en aquello que permanece cuando todo lo demás cambia.</p>
       <a href="#origen" class="mm-link" onclick="toggleMenu()">Origen</a>
       <a href="#experiencia" class="mm-link" onclick="toggleMenu()">Experiencia</a>
       <a href="javascript:void(0)" class="mm-link" onclick="toggleMenu();openAukan()">Aukan</a>
-      <a href="#muyusccubun" class="mm-link" onclick="toggleMenu()">Muyusccubun</a>
+      <a href="javascript:void(0)" class="mm-link" onclick="toggleMenu();openMuysccubun()">Muyusccubun</a>
       <a href="#contacto" class="mm-link" onclick="toggleMenu()">Contacto</a>
     </div>
   </div>
@@ -960,77 +1077,6 @@ en aquello que permanece cuando todo lo demás cambia.</p>
       <div class="exp-card reveal" style="text-align:center;padding:3rem">
         <img src="Logo_PLECWH_Brebatos.png" alt="Sello Brebatos" style="height:72px;width:auto;margin:0 auto 1.5rem;display:block;opacity:.22">
         <p style="font-family:Cormorant Garamond,serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.28)">"Brebatos&reg;: Sabores que cuentan historias."</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- MUYUSCCUBUN -->
-  <section id="muyusccubun" style="padding:7rem 1.5rem;background:var(--black);position:relative;overflow:hidden">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 35% at 50% 15%,rgba(201,162,39,.05) 0%,transparent 68%)"></div>
-    <div style="max-width:960px;margin:0 auto;position:relative;z-index:1">
-      <div style="text-align:center;margin-bottom:3.5rem">
-        <p class="section-tag reveal" style="display:block;margin-bottom:1rem">Revista Bimensual</p>
-        <h2 class="section-h reveal rd1">Muyusccubun</h2>
-        <p class="reveal rd2" style="margin-top:1.5rem;color:rgba(255,255,255,.45);font-size:1.05rem;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.8;font-weight:300">
-          Muyusccubun —nombre que evoca la lengua muisca del territorio que habitamos— es el producto cultural y ecológico de Brebatos: una revista bimensual gratuita que nace para sostener, en papel digital, las memorias que nuestras manifestaciones apenas insinúan.
-        </p>
-        <p class="reveal rd3" style="margin-top:1.2rem;color:rgba(255,255,255,.32);font-size:.98rem;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.8;font-weight:300">
-          Cada edición se organiza alrededor de un mito del altiplano cundiboyacense, y se abre en dos direcciones: el territorio —sus caminos, sus aguas, sus comunidades— y la ecología —las especies, los ciclos, las urgencias del páramo y el bosque andino—. Es lectura pausada, pensada para acompañar una manifestación y un silencio.
-        </p>
-        <p class="reveal rd4" style="margin-top:1.2rem;font-family:Cinzel,serif;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(201,162,39,.5)">Un producto cultural y ecológico patrocinado por Brebatos</p>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem" class="reveal">
-        <a href="Muyusccubun - Edicion 00.pdf" target="_blank" class="exp-card" style="text-decoration:none;display:block;padding:1.6rem 1rem;text-align:center">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:var(--gold);margin-bottom:.5rem">00</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.4">Junio &ndash; Julio<br>2026</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,162,39,.7)">Leer PDF &rarr;</p>
-        </a>
-        <a href="Muyusccubun - Edicion 01.pdf" target="_blank" class="exp-card" style="text-decoration:none;display:block;padding:1.6rem 1rem;text-align:center">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:var(--gold);margin-bottom:.5rem">01</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.4">Agosto &ndash; Septiembre<br>2026</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,162,39,.7)">Leer PDF &rarr;</p>
-        </a>
-        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">02</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Octubre &ndash; Noviembre<br>2026</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
-        </div>
-        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">03</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Diciembre 2026 &ndash;<br>Enero 2027</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
-        </div>
-        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">04</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Febrero &ndash; Marzo<br>2027</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
-        </div>
-        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">05</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Abril &ndash; Mayo<br>2027</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
-        </div>
-        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">06</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Junio &ndash; Julio<br>2027</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
-        </div>
-        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">07</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Agosto &ndash; Septiembre<br>2027</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
-        </div>
-        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">08</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Octubre &ndash; Noviembre<br>2027</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
-        </div>
-        <div class="exp-card" style="padding:1.6rem 1rem;text-align:center;opacity:.4">
-          <p style="font-family:Cormorant Garamond,serif;font-size:2rem;font-style:italic;color:rgba(255,255,255,.5);margin-bottom:.5rem">09</p>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.4">Diciembre 2027 &ndash;<br>Enero 2028</p>
-          <p style="margin-top:.8rem;font-family:Cinzel,serif;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)">Próximamente</p>
-        </div>
       </div>
     </div>
   </section>
@@ -1368,6 +1414,43 @@ function closeAukanArchive() {
   arch.style.opacity = '0';
   setTimeout(function() { arch.style.display = 'none'; }, 1500);
   document.body.style.overflow = 'auto';
+}
+
+function openMuysccubun() {
+  var gw = document.getElementById('muy-gateway');
+  gw.style.display = 'flex';
+  gw.style.flexDirection = 'column';
+  setTimeout(function() { gw.style.opacity = '1'; }, 30);
+  document.body.style.overflow = 'hidden';
+  initMuyStars();
+}
+function enterMuysccubunArchive() {
+  var gw = document.getElementById('muy-gateway');
+  gw.style.opacity = '0';
+  setTimeout(function() { gw.style.display = 'none'; }, 800);
+  var arch = document.getElementById('muy-archive');
+  arch.style.display = 'block';
+  setTimeout(function() { arch.style.opacity = '1'; }, 30);
+  document.body.style.overflow = 'auto';
+}
+function closeMuysccubunArchive() {
+  var arch = document.getElementById('muy-archive');
+  arch.style.opacity = '0';
+  setTimeout(function() { arch.style.display = 'none'; }, 1500);
+  document.body.style.overflow = 'auto';
+}
+function initMuyStars() {
+  var c = document.getElementById('muy-stars');
+  if (!c || c._done) return; c._done = true;
+  var ctx = c.getContext('2d'); var stars=[];
+  function resize() { c.width=window.innerWidth; c.height=window.innerHeight; }
+  function mk() { stars=[]; for(var i=0;i<180;i++) stars.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*.85,o:Math.random()*.45+.08,s:Math.random()*.14+.02,p:Math.random()*Math.PI*2}); }
+  var f=0;
+  function draw() { ctx.clearRect(0,0,c.width,c.height); f++;
+    stars.forEach(function(s){var fl=s.o*(.52+.48*Math.sin(f*s.s+s.p));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(224,201,140,'+fl+')';ctx.fill();});
+    requestAnimationFrame(draw); }
+  window.addEventListener('resize',function(){resize();mk();});
+  resize(); mk(); draw();
 }
 
 function initObserver() {
